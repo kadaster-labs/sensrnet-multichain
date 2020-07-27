@@ -7,11 +7,12 @@ RUN apt-get update \
         && apt-get dist-upgrade -q -y \
         && apt-get install -q -y wget curl \
         && apt-get clean \
-        && rm -rf /var/lib/apt/lists/* \
-        && cd /tmp \
-        && wget https://www.multichain.com/download/multichain-1.0.9.tar.gz \
-        && tar -xvzf multichain-1.0.9.tar.gz \
-        && cd multichain-1.0.9 \
+        && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /tmp
+RUN     wget https://www.multichain.com/download/multichain-2.0.7.tar.gz \
+        && tar -xvzf multichain-2.0.7.tar.gz \
+        && cd multichain-2.0.7 \
         && mv multichaind multichain-cli multichain-util /usr/local/bin \
         && cd /tmp \
         && rm -Rf multichain*

@@ -1,3 +1,5 @@
+const config = require('./address.js');
+
 const multichain = require('multichain-node');
 
 const connection = multichain({
@@ -8,7 +10,7 @@ const connection = multichain({
 });
 
 const p = connection.subscribe({
-    addresses: '1bEyL5F3V7WWvNJd2rBVr2gAcgh1gU23PsRZzn'
+    addresses: config.ADDRESS
 });
 
 Promise.all([p]).then((r) => console.log(r), (e) => console.error(e))

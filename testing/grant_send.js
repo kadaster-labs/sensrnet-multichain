@@ -1,3 +1,5 @@
+const config = require('./address.js');
+
 const multichain = require('multichain-node');
 
 const connection = multichain({
@@ -8,7 +10,7 @@ const connection = multichain({
 });
 
 const p = connection.grant({
-    addresses: '1aovvSqXZKN2Z3h7y4P81kmd6GBVbKUFQTJ7Fy',
+    addresses: config.ADDRESS,
     permissions: 'send'
 });
 
