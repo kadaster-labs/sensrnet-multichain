@@ -1,18 +1,23 @@
 #!/bin/bash -x
 
-echo "Sleep for 3 seconds so the master node has initialised"
-sleep 15
+echo "Sleep for 15 seconds so the master node has initialised"
+sleep 5
 
 echo "Start the chain"
-multichaind -daemon -txindex -shrinkdebugfilesize $CHAINNAME@$MASTER_NODE_HOST:$MASTER_NODE_PORT
+multichaind -daemon -txindex -shrinkdebugfilesize $CHAINNAME@$MASTER_NODE_HOST:$MASTER_NODE_PORT -rpcuser=$RPC_USER -rpcpassword=$RPC_PASSWORD -rpcallowip=$RPC_ALLOW_IP -rpcport=$RPC_PORT
 
-echo "Sleep for 3 seconds so the slave node has initialised"
-sleep 20
+echo "Sleep for 15 seconds so the slave node has initialised"
+sleep 5
 
 echo "Setup /root/.multichain/$CHAINNAME/multichain.conf"
-echo "rpcport=$RPC_PORT" >> /root/.multichain/$CHAINNAME/multichain.conf
-
+cat << EOF > /root/.multichain/$CHAINNAME/multichain.conf
+rpcuser=$RPC_USER
+rpcpassword=$RPC_PASSWORD
+rpcallowip=$RPC_ALLOW_IP
+rpcport=$RPC_PORT
+EOF
 echo "Setup /root/explorer.conf"
+
 cat << EOF > /root/explorer.conf
 port 2750
 host 0.0.0.0
