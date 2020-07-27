@@ -1,0 +1,71 @@
+version: '3.7'
+
+services:
+
+    masternode:
+        build:
+            context: master
+            dockerfile: Dockerfile
+        expose:
+            - 7557
+            - 8002
+        ports:
+            - 7557:7557
+            - 8002:8002
+        environment:
+            CHAINNAME: MyChain
+            NETWORK_PORT: 7557
+            RPC_PORT: 8002
+            RPC_USER: multichainrpc
+            RPC_PASSWORD: password
+            RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
+            PARAM_TARGET_BLOCK_SIZE: target-block-time|30
+            PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
+            PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
+
+    slavenode:
+        build:
+            context: node
+            dockerfile: Dockerfile
+        expose:
+            - 7557
+            - 8002
+        ports:
+            - 7558:7557
+            - 8003:8002
+        environment:
+            CHAINNAME: MyChain
+            NETWORK_PORT: 7557
+            RPC_PORT: 8002
+            RPC_USER: multichainrpc
+            RPC_PASSWORD: password
+            RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
+            MASTER_NODE: masternode
+        links:
+            - masternode
+        depends_on:
+            - masternode
+
+    explorernode:
+        build:
+            context: explorer
+            dockerfile: Dockerfile
+        expose:
+            - 2750
+            - 7557
+            - 8002
+        ports:
+            - 2750:2750
+        environment:
+            CHAINNAME: MyChain
+            NETWORK_PORT: 7557
+            RPC_PORT: 8002
+            RPC_USER: multichainrpc
+            RPC_PASSWORD: password
+            RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
+            MASTER_NODE_HOST: masternode
+            MASTER_NODE_PORT: 7557
+        links:
+            - masternode
+        depends_on:
+            - masternode
