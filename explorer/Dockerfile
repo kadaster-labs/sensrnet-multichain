@@ -7,7 +7,7 @@ RUN apt-get update \
         && rm -rf /var/lib/apt/lists/*
 
 RUN cd /root \
-    && wget https://github.com/MultiChain/multichain-explorer/archive/master.tar.gz \
+    && wget https://codeload.github.com/MultiChain/multichain-explorer/tar.gz/master \
     && tar -xvzf master.tar.gz \
     && rm -Rf master.tar.gz
 
