@@ -8,8 +8,8 @@ const connection = multichain({
 });
 
 const p = connection.grant({
-    addresses: '1GGsqNtSqB72kLjp17ytCgjkuJXSsnKwWbFqeH',
-    for: 'MyChain'
+    addresses: '1aovvSqXZKN2Z3h7y4P81kmd6GBVbKUFQTJ7Fy',
+    permissions: 'send'
 });
 
 Promise.all([p]).then((r) => console.log(r), (e) => console.error(e))
