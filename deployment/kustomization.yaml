@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: multichain
+
+resources:
+  - namespace.yaml
+  - explorer/explorer-deployment.yaml
+  - explorer/explorer-service.yaml
+  - masternode/masternode-deployment.yaml
+  - masternode/masternode-service.yaml
+  - node/node-deployment.yaml
+  - node/node-service.yaml
