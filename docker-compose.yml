@@ -23,7 +23,7 @@ services:
             PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
             PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
 
-    slavenode:
+    node:
         build:
             context: node
             dockerfile: Dockerfile
@@ -46,7 +46,7 @@ services:
         depends_on:
             - masternode
 
-    explorernode:
+    explorer:
         build:
             context: explorer
             dockerfile: Dockerfile

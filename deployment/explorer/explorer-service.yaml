@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: explorer
+  name: explorer
+  namespace: explorer
+spec:
+  ports:
+  - name: "2750"
+    port: 2750
+    targetPort: 2750
+  selector:
+    app: explorer

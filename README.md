@@ -84,7 +84,7 @@ max-std-op-drops-count = 5              # Maximum number of OP_DROPs per output 
 max-std-element-size = 600              # Maximum size of data elements in standard transactions, in bytes. (128 - 32768)
 ```
 
-### Slavenode
+### Node
 
 To configure your chain, we use environment variables.
 
