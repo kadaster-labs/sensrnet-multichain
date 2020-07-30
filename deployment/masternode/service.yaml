@@ -4,7 +4,6 @@ metadata:
   labels:
     app: masternode
   name: masternode
-  namespace: masternode
 spec:
   ports:
   - name: "7557"

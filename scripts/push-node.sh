@@ -11,7 +11,7 @@ IMAGE=node
 VERSION=$(node -pe "require('./package.json').version")
 
 # ensure we're logged on at the registry
-# az acr login --name sensrnetregistry
+az acr login --name sensrnetregistry
 
 # run build
 ./scripts/build-node.sh
@@ -20,5 +20,5 @@ VERSION=$(node -pe "require('./package.json').version")
 docker tag $REGISTRY/$USERNAME/$IMAGE:latest $REGISTRY/$USERNAME/$IMAGE:$VERSION
 
 # push it
-# docker push $REGISTRY/$USERNAME/$IMAGE:latest
-# docker push $REGISTRY/$USERNAME/$IMAGE:$VERSION
+docker push $REGISTRY/$USERNAME/$IMAGE:latest
+docker push $REGISTRY/$USERNAME/$IMAGE:$VERSION

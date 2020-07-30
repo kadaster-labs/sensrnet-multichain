@@ -4,7 +4,6 @@ metadata:
   labels:
     app: explorer
   name: explorer
-  namespace: explorer
 spec:
   replicas: 1
   selector:
@@ -34,7 +33,6 @@ spec:
         - name: RPC_USER
           value: multichainrpc
         image: sensrnetregistry.azurecr.io/sensrnet/explorer:latest
-        imagePullPolicy: Never
         name: explorer
         ports:
         - containerPort: 2750

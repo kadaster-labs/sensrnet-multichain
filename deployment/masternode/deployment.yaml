@@ -4,7 +4,6 @@ metadata:
   labels:
     app: masternode
   name: masternode
-  namespace: masternode
 spec:
   replicas: 1
   selector:
@@ -36,7 +35,6 @@ spec:
         - name: RPC_USER
           value: multichainrpc
         image: sensrnetregistry.azurecr.io/sensrnet/masternode:latest
-        imagePullPolicy: Never
         name: masternode
         ports:
         - containerPort: 7557
