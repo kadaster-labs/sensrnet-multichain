@@ -7,6 +7,7 @@ metadata:
 spec:
   ports:
   - port: 2750
+    protocol: TCP
     targetPort: 2750
   selector:
     app: explorer

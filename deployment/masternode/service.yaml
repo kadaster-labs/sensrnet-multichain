@@ -8,8 +8,10 @@ spec:
   ports:
   - name: "7557"
     port: 7557
+    protocol: TCP
     targetPort: 7557
   - name: "8002"
+    protocol: TCP
     port: 8002
     targetPort: 8002
   selector:

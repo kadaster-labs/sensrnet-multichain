@@ -5,8 +5,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/preserve-host: "true"
+    traefik.ingress.kubernetes.io/request-modifier: "ReplacePathRegex: ^/internal/explorer/(.*) /$1"
 spec:
   rules:
+  - host: localhost
   - http:
       paths:
       - backend:
