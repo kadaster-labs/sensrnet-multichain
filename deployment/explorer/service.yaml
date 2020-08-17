@@ -6,7 +6,7 @@ metadata:
   name: explorer
 spec:
   ports:
-  - port: 2750
+  - port: 80
     protocol: TCP
     targetPort: 2750
   selector:

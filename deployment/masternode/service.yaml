@@ -3,10 +3,11 @@ kind: Service
 metadata:
   labels:
     app: masternode
-  name: masternode
+  name: masternode-service
 spec:
+  type: LoadBalancer
   ports:
-  - name: "7557"
+  - name: masternode
     port: 7557
     protocol: TCP
     targetPort: 7557
