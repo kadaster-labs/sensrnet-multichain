@@ -4,7 +4,6 @@ metadata:
   labels:
     app: node
   name: node
-  namespace: node
 spec:
   replicas: 1
   selector:
@@ -20,7 +19,7 @@ spec:
         - name: CHAINNAME
           value: MyChain
         - name: MASTER_NODE
-          value: masternode
+          value: 20.54.161.4
         - name: NETWORK_PORT
           value: "7557"
         - name: RPC_ALLOW_IP
@@ -31,8 +30,7 @@ spec:
           value: "8002"
         - name: RPC_USER
           value: multichainrpc
-        image: sensrnetregistry.azurecr.io/sensrnet/node:latest
-        imagePullPolicy: Never
+        image: sensrnetregistry.azurecr.io/sensrnet/node:1.0.0
         name: node
         ports:
         - containerPort: 7557

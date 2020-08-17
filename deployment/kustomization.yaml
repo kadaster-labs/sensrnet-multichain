@@ -5,6 +5,6 @@ namespace: multichain
 
 resources:
   - namespace.yaml
-  - explorer
-  - masternode
-  # - node
+  # - explorer
+  # - masternode
+  - node

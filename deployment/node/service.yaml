@@ -3,13 +3,14 @@ kind: Service
 metadata:
   labels:
     app: node
-  name: node
-  namespace: node
+  name: node-service
 spec:
   ports:
-  - port: 7558
+  - name: "7557"
+    port: 7557
     targetPort: 7557
-  - port: 8003
+  - name: "8002"
+    port: 8002
     targetPort: 8002
   selector:
     app: node
