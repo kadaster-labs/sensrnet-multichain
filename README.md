@@ -84,7 +84,7 @@ max-std-op-drops-count = 5              # Maximum number of OP_DROPs per output 
 max-std-element-size = 600              # Maximum size of data elements in standard transactions, in bytes. (128 - 32768)
 ```
 
-### Slavenode
+### Node
 
 To configure your chain, we use environment variables.
 
@@ -97,3 +97,13 @@ To configure your chain, we use environment variables.
 * RPC_PASSWORD: 79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz
 * RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
 * MASTERNODE: masternode   # IP address of the master node, or a docker compose link. Don't forget the links section!
+
+## Deployment
+The components can be deployed using one of the following commands, depending on the component you want to deploy:
+```
+kustomize build deployment/explorer | kubectl apply -f -
+kustomize build deployment/masternode | kubectl apply -f -
+kustomize build deployment/node | kubectl apply -f -
+```
+
+In our current setup, the explorer runs on the same cluster as the masternode. Regular multichain nodes run on different clusters and therefore require the public IP of the masternode.

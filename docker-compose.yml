@@ -23,7 +23,7 @@ services:
             PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
             PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
 
-    slavenode:
+    node:
         build:
             context: node
             dockerfile: Dockerfile
@@ -46,7 +46,7 @@ services:
         depends_on:
             - masternode
 
-    explorernode:
+    explorer:
         build:
             context: explorer
             dockerfile: Dockerfile
@@ -65,6 +65,8 @@ services:
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
             MASTER_NODE_HOST: masternode
             MASTER_NODE_PORT: 7557
+            # MASTER_NODE_HOST: http://viewer-sensrnet.westeurope.cloudapp.azure.com/internal/multichain
+            # MASTER_NODE_PORT: 80
         links:
             - masternode
         depends_on:

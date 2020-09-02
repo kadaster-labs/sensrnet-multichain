@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: node
+  name: node
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node
+  template:
+    metadata:
+      labels:
+        app: node
+    spec:
+      containers:
+      - env:
+        - name: CHAINNAME
+          value: MyChain
+        - name: MASTER_NODE
+          value: 20.54.161.4
+        - name: NETWORK_PORT
+          value: "7557"
+        - name: RPC_ALLOW_IP
+          value: 0.0.0.0/0.0.0.0
+        - name: RPC_PASSWORD
+          value: password
+        - name: RPC_PORT
+          value: "8002"
+        - name: RPC_USER
+          value: multichainrpc
+        image: sensrnetregistry.azurecr.io/sensrnet/node:1.0.0
+        name: node
+        ports:
+        - containerPort: 7557
+        - containerPort: 8002
+        resources: {}
+      restartPolicy: Always

@@ -6,7 +6,7 @@ sleep 10
 echo "Start the chain"
 multichaind -daemon -txindex -shrinkdebugfilesize $CHAINNAME@$MASTER_NODE_HOST:$MASTER_NODE_PORT -rpcuser=$RPC_USER -rpcpassword=$RPC_PASSWORD -rpcallowip=$RPC_ALLOW_IP -rpcport=$RPC_PORT
 
-echo "Sleep for 10 seconds so the slave node has initialised"
+echo "Sleep for 10 seconds so the node has initialised"
 sleep 10
 
 echo "Setup /root/.multichain/$CHAINNAME/multichain.conf"
