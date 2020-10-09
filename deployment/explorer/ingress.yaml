@@ -5,12 +5,11 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: traefik
     traefik.ingress.kubernetes.io/preserve-host: "true"
-    traefik.ingress.kubernetes.io/request-modifier: "ReplacePathRegex: ^/internal/explorer/(.*) /$1"
 spec:
   rules:
-  - http:
+  - host: explorer.${INGRESS_HOST}
+    http:
       paths:
-      - path: /internal/explorer
-        backend:
-          serviceName: explorer
+      - backend:
+          serviceName: explorer-service
           servicePort: 80

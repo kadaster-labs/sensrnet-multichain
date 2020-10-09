@@ -7,15 +7,15 @@ services:
             context: master
             dockerfile: Dockerfile
         expose:
-            - 7557
-            - 8002
+            - 8571
+            - 8570
         ports:
-            - 7557:7557
-            - 8002:8002
+            - 8571:8571
+            - 8570:8570
         environment:
             CHAINNAME: MyChain
-            NETWORK_PORT: 7557
-            RPC_PORT: 8002
+            NETWORK_PORT: 8571
+            RPC_PORT: 8570
             RPC_USER: multichainrpc
             RPC_PASSWORD: password
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
@@ -28,15 +28,15 @@ services:
             context: node
             dockerfile: Dockerfile
         expose:
-            - 7557
-            - 8002
+            - 8571
+            - 8570
         ports:
-            - 7558:7557
-            - 8003:8002
+            - 8573:8571
+            - 8572:8570
         environment:
             CHAINNAME: MyChain
-            NETWORK_PORT: 7557
-            RPC_PORT: 8002
+            NETWORK_PORT: 8571
+            RPC_PORT: 8570
             RPC_USER: multichainrpc
             RPC_PASSWORD: password
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
@@ -52,21 +52,18 @@ services:
             dockerfile: Dockerfile
         expose:
             - 2750
-            - 7557
-            - 8002
+            - 8571
+            - 8570
         ports:
             - 2750:2750
         environment:
             CHAINNAME: MyChain
-            NETWORK_PORT: 7557
-            RPC_PORT: 8002
+            NETWORK_PORT: 8571
+            RPC_PORT: 8570
             RPC_USER: multichainrpc
             RPC_PASSWORD: password
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
             MASTER_NODE_HOST: masternode
-            MASTER_NODE_PORT: 7557
-            # MASTER_NODE_HOST: http://viewer-sensrnet.westeurope.cloudapp.azure.com/internal/multichain
-            # MASTER_NODE_PORT: 80
         links:
             - masternode
         depends_on:
