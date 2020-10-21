@@ -16,7 +16,7 @@ To configure your chain, we use environment variables.
 * NETWORK_PORT: 7447       # also expose this port!
 * RPC_PORT: 8000           # also expose this port!
 * RPC_USER: multichainrpc
-* RPC_PASSWORD: 79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz
+* RPC_PASSWORD: change-me
 * RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
 
 #### Optional
@@ -107,3 +107,7 @@ kustomize build deployment/node | kubectl apply -f -
 ```
 
 In our current setup, the explorer runs on the same cluster as the masternode. Regular multichain nodes run on different clusters and therefore require the public IP of the masternode.
+
+## License
+
+This work is licensed under a [EUPL v1.2 license](./LICENSE.md).
