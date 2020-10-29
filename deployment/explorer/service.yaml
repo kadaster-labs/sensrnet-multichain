@@ -6,7 +6,8 @@ metadata:
   name: explorer-service
 spec:
   ports:
-  - port: 80
+  - name: "web"
+    port: 2750
     protocol: TCP
     targetPort: 2750
   selector:

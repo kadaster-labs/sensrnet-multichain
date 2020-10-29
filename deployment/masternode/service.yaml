@@ -3,7 +3,7 @@ kind: Service
 metadata:
   labels:
     app: masternode
-  name: masternode-service
+  name: multichain-service
 spec:
   ports:
   - name: "8571"

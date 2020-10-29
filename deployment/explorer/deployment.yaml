@@ -19,7 +19,7 @@ spec:
         - name: CHAINNAME
           value: MyChain
         - name: MASTER_NODE_HOST
-          value: masternode-service
+          value: multichain-service
         - name: NETWORK_PORT
           value: "8571"
         - name: RPC_ALLOW_IP
