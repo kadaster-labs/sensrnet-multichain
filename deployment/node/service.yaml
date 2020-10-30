@@ -3,14 +3,14 @@ kind: Service
 metadata:
   labels:
     app: node
-  name: node-service
+  name: multichain-service
 spec:
   ports:
-  - name: "7557"
-    port: 7557
-    targetPort: 7557
-  - name: "8002"
-    port: 8002
-    targetPort: 8002
+  - name: "8571"
+    port: 8571
+    targetPort: 8571
+  - name: "8570"
+    port: 8570
+    targetPort: 8570
   selector:
     app: node

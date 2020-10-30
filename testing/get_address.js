@@ -1,7 +1,7 @@
 const multichain = require('multichain-node');
 
 const connection = multichain({
-    port: 8003,
+    port: 8570,
     host: '127.0.0.1',
     user: 'multichainrpc',
     pass: 'password'

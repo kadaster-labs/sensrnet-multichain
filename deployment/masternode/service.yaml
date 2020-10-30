@@ -3,17 +3,16 @@ kind: Service
 metadata:
   labels:
     app: masternode
-  name: masternode-service
+  name: multichain-service
 spec:
-  type: LoadBalancer
   ports:
-  - name: masternode
-    port: 7557
+  - name: "8571"
+    port: 8571
     protocol: TCP
-    targetPort: 7557
-  - name: "8002"
+    targetPort: 8571
+  - name: "8570"
     protocol: TCP
-    port: 8002
-    targetPort: 8002
+    port: 8570
+    targetPort: 8570
   selector:
     app: masternode

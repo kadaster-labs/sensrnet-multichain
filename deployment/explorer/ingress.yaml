@@ -1,16 +1,29 @@
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
 metadata:
-  name: explorer-ingress
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/preserve-host: "true"
-    traefik.ingress.kubernetes.io/request-modifier: "ReplacePathRegex: ^/internal/explorer/(.*) /$1"
+  name: explorer-ingress
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /internal/explorer
-        backend:
-          serviceName: explorer
-          servicePort: 80
+  entryPoints:
+  - http
+  routes:
+  - kind: Rule
+    match: PathPrefix(`/internal/explorer`)
+    middlewares:
+    - name: requestmodifier-explorer
+    services:
+    - kind: Service
+      name: explorer-service
+      port: 2750
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: requestmodifier-explorer
+spec:
+  replacePathRegex:
+    regex: ^/internal/explorer/(.*)
+    replacement: /$1
