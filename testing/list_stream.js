@@ -1,20 +1,17 @@
-const multichain = require('multichain-node');
+const multichain = require('multinodejs');
 
 const connection = multichain({
-    port: 8570,
+    port: 8572,
     host: '127.0.0.1',
     user: 'multichainrpc',
     pass: 'password'
 });
 
-const p = connection.listStreamItems({
-    stream: 'sensors',
-    start: 0,
-    verbose: true
-});
+const streamItemsPromise = connection.listStreamItems(['sensors', true]);
 
-Promise.all([p]).then((r) => {
-    console.log(r);
-    const data = r[0][0].data;
-    console.log(Buffer.from(data, 'hex').toString());
-}, (e) => console.error(e))
+streamItemsPromise.then((streamItems) => {
+    console.log(streamItems.length);
+    if (streamItems.length) {
+        console.log(Buffer.from(streamItems[0].data, 'hex').toString());
+    }
+}, (error) => console.error(error))

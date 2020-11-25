@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "uuid": "^8.2.0",
-    "multichain-node": "^2.2.0-version1.0.4"
+    "multinodejs": "^2.0.0"
   },
   "keywords": [],
   "author": "",

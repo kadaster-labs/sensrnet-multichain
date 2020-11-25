@@ -1,6 +1,4 @@
-const config = require('./address.js');
-
-const multichain = require('multichain-node');
+const multichain = require('multinodejs');
 
 const connection = multichain({
     port: 8570,
@@ -9,8 +7,5 @@ const connection = multichain({
     pass: 'password'
 });
 
-const p = connection.listPermissions({
-    addresses: config.ADDRESS
-});
-
-Promise.all([p]).then((r) => console.log(r), (e) => console.error(e))
+const permissionPromise = connection.listPermissions(['*', '1JEFewrhP93AWDvhVQTqCMTwcP3sWNTqEGUPqN']);
+permissionPromise.then((result) => console.log(result), (error) => console.error(error));
