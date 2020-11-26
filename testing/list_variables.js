@@ -7,5 +7,8 @@ const connection = multichain({
     pass: 'password'
 });
 
-const subscribePromise = connection.subscribe(['sensors', true]);
-subscribePromise.then((result) => console.log(result), (error) => console.error(error));
+const variablesPromise = connection.listvariables(['*', true]);
+
+variablesPromise.then((variables) => {
+    console.log(variables);
+}, (error) => console.error(error))

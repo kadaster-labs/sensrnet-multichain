@@ -7,5 +7,5 @@ const connection = multichain({
     pass: 'password',
 });
 
-const addressesPromise = connection.getAddresses();
-addressesPromise.then((addresses) => console.log(addresses), (error) => console.error(error));
+const variablePromise = connection.getvariablevalue(['wim']);
+variablePromise.then((variable) => console.log(variable), (error) => console.error(error));

@@ -1,38 +1,31 @@
 const { v4: uuidv4 } = require('uuid');
-const multichain = require('multichain-node');
+const multichain = require('multinodejs');
 
 const connection = multichain({
     port: 8570,
     host: '127.0.0.1',
     user: 'multichainrpc',
-    pass: 'password'
+    pass: 'password',
 });
 
-const sensor = {
-    'typeName': 'Sensor',
-    'location': {
-        'height': 0,
-        'latitude': 52.384381040312455,
-        'longitude': 6.287133353697078,
-        'baseObjectId': 'non-empty'
-    },
-    'dataStreams': [],
-    'active': true,
-    'aim': null,
-    'description': null,
-    'documentationUrl': 'kadaster.nl',
-    'manufacturer': 'Philips',
-    'name': 'WasteContainers',
-    'theme': ['SoilandUnderground'],
-    'typeDetails': {
-        'subType': 'WasteContainers'
-    }
+const sensor =  {
+    "source":"1GmJ76BMsGE2niiLrib2BDdTmvF8HWVDSzJhX5",
+    "aggregateId":"fc516a63-c78b-4af5-88a0-1c47ae2130d7",
+    "sensorId":"fc516a63-c78b-4af5-88a0-1c47ae2130d7",
+    "organizationId":"Kadaster",
+    "name":"LightCell",
+    "longitude":6.730474337621839,
+    "latitude":53.40260808820527,
+    "height":0,
+    "baseObjectId":"non-empty",
+    "aim":"",
+    "description":"",
+    "active":true,
+    "theme":["Wheather"],
+    "category":"Sensor",
+    "typeName":"LightCell",
+    "eventType":"SensorRegistered"
 }
 
-const p = connection.publish({
-    stream: 'sensors',
-    key: uuidv4(),
-    data: Buffer.from(JSON.stringify(sensor)).toString('hex')
-});
-
-Promise.all([p]).then((r) => console.log(r), (e) => console.error(e));
+const publishPromise = connection.publish(['sensors', uuidv4(), Buffer.from(JSON.stringify(sensor)).toString('hex')]);
+publishPromise.then((result) => console.log(result), (error) => console.error(error));

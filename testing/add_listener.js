@@ -1,6 +1,4 @@
-const config = require('./address.js');
-
-const multichain = require('multichain-node');
+const multichain = require('multinodejs');
 
 const connection = multichain({
     port: 8570,
@@ -9,8 +7,5 @@ const connection = multichain({
     pass: 'password'
 });
 
-const p = connection.subscribe({
-    addresses: config.ADDRESS
-});
-
-Promise.all([p]).then((r) => console.log(r), (e) => console.error(e))
+const subscriptionPromise = connection.subscribe(['sensors']);
+subscriptionPromise.then((success) => console.log(success), (error) => console.error(error))
