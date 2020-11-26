@@ -12,9 +12,9 @@ RUN apt-get update && apt-get install -y \
 
 # Multichain
 WORKDIR /tmp
-RUN     wget https://www.multichain.com/download/multichain-2.1.tar.gz \
-        && tar -xvzf multichain-2.1.tar.gz \
-        && cd multichain-2.1 \
+RUN     wget https://www.multichain.com/download/multichain-2.1.1.tar.gz \
+        && tar -xvzf multichain-2.1.1.tar.gz \
+        && cd multichain-2.1.1 \
         && mv multichaind multichain-cli multichain-util /usr/local/bin \
         && cd /tmp \
         && rm -Rf multichain*
