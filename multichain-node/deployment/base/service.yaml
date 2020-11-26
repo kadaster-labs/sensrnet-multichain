@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: multichain-node-service
+spec:
+  ports:
+  - name: rpc
+    port: 8570
+    targetPort: rpc
+  - name: tcp
+    port: 8571
+    targetPort: tcp
+  - name: web
+    port: 2750
+    targetPort: web
