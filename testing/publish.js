@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require('uuid');
 const multichain = require('multinodejs');
 
 const connection = multichain({
@@ -8,9 +7,11 @@ const connection = multichain({
     pass: 'password',
 });
 
+const key = 'fc516a63-c78b-4af5-88a0-1c47ae2130d7';
+
 const sensor =  {
     "source":"1GmJ76BMsGE2niiLrib2BDdTmvF8HWVDSzJhX5",
-    "aggregateId":"fc516a63-c78b-4af5-88a0-1c47ae2130d7",
+    "aggregateId": key,
     "sensorId":"fc516a63-c78b-4af5-88a0-1c47ae2130d7",
     "organizationId":"Kadaster",
     "name":"LightCell",
@@ -27,5 +28,5 @@ const sensor =  {
     "eventType":"SensorRegistered"
 }
 
-const publishPromise = connection.publish(['sensors', uuidv4(), Buffer.from(JSON.stringify(sensor)).toString('hex')]);
+const publishPromise = connection.publish(['sensors', key, Buffer.from(JSON.stringify(sensor)).toString('hex')]);
 publishPromise.then((result) => console.log(result), (error) => console.error(error));

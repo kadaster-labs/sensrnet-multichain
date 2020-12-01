@@ -1,5 +1,8 @@
 #!/bin/bash
 
+echo "Sleep for 10 seconds so the master node has initialised"
+sleep 10
+
 echo "Start the chain"
 multichaind \
   -daemon \
@@ -10,7 +13,7 @@ multichaind \
   -rpcpassword=$RPC_PASSWORD \
   -rpcallowip=$RPC_ALLOW_IP \
   -rpcport=$RPC_PORT \
-  -datadir=/data/
+  -datadir=/data
 
 echo "Sleep for 10 seconds so the node has initialised"
 sleep 10
@@ -23,9 +26,9 @@ rpcallowip=$RPC_ALLOW_IP
 rpcport=$RPC_PORT
 EOF
 
-echo "Setup /data/explorer.conf"
+echo "Setup /root/explorer.conf"
 
-cat << EOF > /data/explorer.conf
+cat << EOF > /root/explorer.conf
 port 2750
 host 0.0.0.0
 datadir += [{
@@ -39,5 +42,5 @@ connect-args = dockerchain.explorer.sqlite
 EOF
 
 echo "Run the explorer"
-python -m Mce.abe --config /data/explorer.conf --commit-bytes 100000 --no-serve
-python -m Mce.abe --config /data/explorer.conf
+python -m Mce.abe --config /root/explorer.conf --commit-bytes 100000 --no-serve
+python -m Mce.abe --config /root/explorer.conf

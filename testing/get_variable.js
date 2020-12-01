@@ -7,5 +7,5 @@ const connection = multichain({
     pass: 'password',
 });
 
-const variablePromise = connection.getvariablevalue(['wim']);
+const variablePromise = connection.getvariablevalue(['fc516a63c78b4af588a01c47ae2130d7']);
 variablePromise.then((variable) => console.log(variable), (error) => console.error(error));

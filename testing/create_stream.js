@@ -7,7 +7,7 @@ const connection = multichain({
     pass: 'password'
 });
 
-const streamPromise = connection.create(['stream', 'organizations', true]);
+const streamPromise = connection.create(['stream', 'sensors', true]);
 streamPromise.then(() => {
     const listStreamsPromise = connection.listStreams();
     listStreamsPromise.then((streams) => console.log(streams), (error) => console.error(error));
