@@ -5,10 +5,10 @@ sleep 10
 
 echo "Start the chain"
 multichaind \
+  $CHAINNAME@$(dig +short $MASTER_NODE_HOST):$NETWORK_PORT \
   -daemon \
   -txindex \
   -shrinkdebugfilesize \
-  $CHAINNAME@$MASTER_NODE_HOST:$NETWORK_PORT \
   -rpcuser=$RPC_USER \
   -rpcpassword=$RPC_PASSWORD \
   -rpcallowip=$RPC_ALLOW_IP \
