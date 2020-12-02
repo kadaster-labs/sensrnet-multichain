@@ -3,9 +3,15 @@
 echo "Sleep for 10 seconds so the master node has initialised"
 sleep 10
 
+if [[ $MASTER_NODE_HOST =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+  IP=$MASTER_NODE_HOST
+else
+  IP=$(dig +short $MASTER_NODE_HOST)
+fi
+
 echo "Start the chain"
 multichaind \
-  $CHAINNAME@$(dig +short $MASTER_NODE_HOST):$NETWORK_PORT \
+  $CHAINNAME@$IP:$NETWORK_PORT \
   -daemon \
   -txindex \
   -shrinkdebugfilesize \
