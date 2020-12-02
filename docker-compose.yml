@@ -34,6 +34,7 @@ services:
             context: multichain-node
             dockerfile: Dockerfile
         expose:
+            - 2750
             - 8571
             - 8570
         ports:
@@ -50,6 +51,7 @@ services:
             RPC_PASSWORD: password
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
             MASTER_NODE_HOST: masternode
+            WAIT_FOR_MASTER: 1
         links:
             - masternode
         depends_on:

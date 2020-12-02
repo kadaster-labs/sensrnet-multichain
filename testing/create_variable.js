@@ -7,7 +7,7 @@ const connection = multichain({
     pass: 'password'
 });
 
-const variableData = { 'addresses': ['1bKnNpZXN53h5yiR75Y67kwKqpkeWowufbNwdy'] };
+const variableData = { 'addresses': ['1ZcUAQ2HA66XyYofXDLsWdegCaSVr31cmmDzfL'] };
 
-const createVariablePromise = connection.create(['variable', 'test-var-1', true, JSON.stringify(variableData)]);
+const createVariablePromise = connection.create(['variable', 'fc516a63c78b4af588a01c47ae2130d7', true, JSON.stringify(variableData)]);
 createVariablePromise.then((data) => console.log(data), (error) => console.error(error));

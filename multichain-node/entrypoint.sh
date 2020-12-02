@@ -1,7 +1,9 @@
 #!/bin/bash
 
-echo "Sleep for 10 seconds so the master node has initialised"
-sleep 10
+if [[ $WAIT_FOR_MASTER == 1 ]]; then
+  echo "Sleep for 10 seconds so the master node has initialised"
+  sleep 10
+fi
 
 if [[ $MASTER_NODE_HOST =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
   IP=$MASTER_NODE_HOST

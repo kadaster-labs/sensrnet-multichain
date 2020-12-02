@@ -45,5 +45,5 @@ function filtertransaction() {
     }
 }`;
 
-const txFilterPromise = connection.create(['txfilter', 'validate-node-txfilter', restrictions, smartFilter]);
+const txFilterPromise = connection.create(['txfilter', 'validate-address-txfilter', restrictions, smartFilter]);
 txFilterPromise.then((data) => console.log(data), (error) => console.error(error))

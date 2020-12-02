@@ -7,5 +7,5 @@ const connection = multichain({
     pass: 'password'
 });
 
-const approvePromise = connection.approveFrom(['1bQ21WPWBfRnJbPHjFojkaf3u3xGXpwCw9fvQb', 'validate-node-txfilter', true]);
+const approvePromise = connection.approveFrom(['12poUJQDD4AUTZfdHbPXr4wrWTw8r19aeR1jWs', 'validate-address-txfilter', true]);
 approvePromise.then((data) => console.log(data), (error) => console.error(error))
