@@ -51,7 +51,7 @@ services:
             RPC_PASSWORD: password
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
             MASTER_NODE_HOST: masternode
-            WAIT_FOR_MASTER: 1
+            DELAY_INIT: 1
         links:
             - masternode
         depends_on:

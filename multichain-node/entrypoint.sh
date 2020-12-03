@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ $WAIT_FOR_MASTER == 1 ]]; then
-  echo "Sleep for 10 seconds so the master node has initialised"
+if [[ $DELAY_INIT == 1 ]]; then
+  echo "Sleep for 10 seconds so the entry node has initialised"
   sleep 10
 fi
 
