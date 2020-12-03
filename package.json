@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "postinstall": "patch-package",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "uuid": "^8.2.0",
-    "multinodejs": "^2.0.0"
+    "multinodejs": "^2.0.0",
+    "patch-package": "^6.2.2",
+    "uuid": "^8.2.0"
   },
   "keywords": [],
   "author": "",

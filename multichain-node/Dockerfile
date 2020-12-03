@@ -2,6 +2,7 @@ FROM ubuntu:16.04
 
 RUN apt-get update && apt-get install -y \
   curl \
+  dnsutils \
   python \
   python-dev \
   python-pip \
@@ -22,9 +23,9 @@ RUN     wget https://www.multichain.com/download/multichain-2.1.1.tar.gz \
 # Multichain Explorer
 WORKDIR /root
 
-RUN wget https://github.com/MultiChain/multichain-explorer/archive/master.tar.gz \
-  && tar -xvzf master.tar.gz \
-  && rm -Rf master.tar.gz
+COPY explorer.tar.gz .
+RUN tar -xvzf explorer.tar.gz \
+  && rm -Rf explorer.tar.gz
 
 WORKDIR /root/multichain-explorer-master
 COPY ./requirements.txt ./requirements.txt

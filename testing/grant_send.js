@@ -7,5 +7,5 @@ const connection = multichain({
     pass: 'password'
 });
 
-const grantPromise = connection.grant(['1JEFewrhP93AWDvhVQTqCMTwcP3sWNTqEGUPqN', 'send']);
+const grantPromise = connection.grant(['1ZcUAQ2HA66XyYofXDLsWdegCaSVr31cmmDzfL', 'send']);
 grantPromise.then((result) => console.log(result), (error) => console.error(error));
