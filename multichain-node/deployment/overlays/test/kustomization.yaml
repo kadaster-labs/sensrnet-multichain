@@ -1,9 +1,6 @@
 bases:
 - ../../base
 
-resources:
-- storageclass.yaml
-
 patchesStrategicMerge:
 - deployment.yaml
 - pvc.yaml

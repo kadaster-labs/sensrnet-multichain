@@ -8,12 +8,15 @@ spec:
     spec:
       containers:
       - name: multichain-node
-        image: sensrnetregistry.azurecr.io/sensrnet/multichain-node:latest
+        image: sensrnetnl/multichain-node:latest
         env:
         - name: CHAINNAME
           value: MyChain
         - name: MASTER_NODE_HOST
-          value: 20.54.161.4
+          valueFrom:
+              secretKeyRef:
+                name: multichain-settings
+                key: host
         - name: NETWORK_PORT
           value: "7557"
         - name: RPC_ALLOW_IP
