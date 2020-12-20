@@ -8,7 +8,7 @@ spec:
     spec:
       containers:
       - name: multichain-node
-        image: sensrnetnl/multichain-node:latest
+        image: sensrnetnl/multichain-node:0.1.0
         env:
         - name: CHAINNAME
           value: MyChain
