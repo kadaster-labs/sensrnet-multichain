@@ -8,7 +8,7 @@ spec:
       containers:
       - name: multichain-node
         env:
-          - name: MASTER_NODE_HOST
+          - name: MAIN_NODE_HOST
             $patch: delete
           - name: PARAM_TARGET_BLOCK_SIZE
             value: "target-block-time|30"

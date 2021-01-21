@@ -57,7 +57,7 @@ services:
             RPC_USER: multichainrpc
             RPC_PASSWORD: password
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
-            MASTER_NODE_HOST: main-node
+            MAIN_NODE_HOST: main-node
             DELAY_INIT: 1
         links:
             - main-node

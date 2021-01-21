@@ -12,7 +12,7 @@ spec:
         env:
         - name: CHAINNAME
           value: SensRNet
-        - name: MASTER_NODE_HOST
+        - name: MAIN_NODE_HOST
           valueFrom:
               secretKeyRef:
                 name: multichain-settings

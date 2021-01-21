@@ -7,7 +7,7 @@ then
 fi
 
 echo "Start the chain."
-if [ -z "$MASTER_NODE_HOST" ];
+if [ -z "$MAIN_NODE_HOST" ];
 then
   # Create the chain if it is not there yet
   if [ ! -d /data/$CHAINNAME ];
@@ -55,11 +55,11 @@ EOF
   multichain-cli $CHAINNAME -datadir=/data create stream sensors true
   multichain-cli $CHAINNAME -datadir=/data create stream organizations true
 else
-  if [[ $MASTER_NODE_HOST =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]];
+  if [[ $MAIN_NODE_HOST =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]];
   then
-    IP=$MASTER_NODE_HOST
+    IP=$MAIN_NODE_HOST
   else
-    IP=$(dig +short $MASTER_NODE_HOST)
+    IP=$(dig +short $MAIN_NODE_HOST)
   fi
 
   multichaind \

@@ -7,9 +7,9 @@ spec:
     spec:
       containers:
       - name: multichain-node
-        image: sensrnet-multichain_multichain-node:latest
+        image: sensrnet-multichain_node:latest
         env:
-          - name: MASTER_NODE_HOST
+          - name: MAIN_NODE_HOST
             $patch: delete
           - name: PARAM_TARGET_BLOCK_SIZE
             value: "target-block-time|30"
