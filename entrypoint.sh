@@ -58,13 +58,13 @@ EOF
 }
 
 start_node () {
-  echo "Start node with chain: $CHAINNAME."
-
   if [[ $MAIN_NODE_HOST =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
     IP=$MAIN_NODE_HOST
   else
     IP=$(dig +short $MAIN_NODE_HOST)
   fi
+
+  echo "Start node with existing chain: $CHAINNAME from $IP:$NETWORK_PORT"
 
   multichaind $CHAINNAME@$IP:$NETWORK_PORT \
     -daemon \
