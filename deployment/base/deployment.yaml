@@ -11,14 +11,14 @@ spec:
         image: sensrnetnl/multichain-node:0.1.0
         env:
         - name: CHAINNAME
-          value: MyChain
+          value: SensRNet
         - name: MASTER_NODE_HOST
           valueFrom:
               secretKeyRef:
                 name: multichain-settings
                 key: host
         - name: NETWORK_PORT
-          value: "7557"
+          value: "8571"
         - name: RPC_ALLOW_IP
           value: 0.0.0.0/0.0.0.0
         - name: RPC_USER

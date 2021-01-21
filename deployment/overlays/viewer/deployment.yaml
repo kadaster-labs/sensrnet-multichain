@@ -7,6 +7,15 @@ spec:
     spec:
       containers:
       - name: multichain-node
+        env:
+          - name: MASTER_NODE_HOST
+            $patch: delete
+          - name: PARAM_TARGET_BLOCK_SIZE
+            value: "target-block-time|30"
+          - name: PARAM_ANYONE_CAN_CONNECT
+            value: "anyone-can-connect|true"
+          - name: PARAM_ANYONE_CAN_MINE
+            value: "anyone-can-mine|true"
         volumeMounts:
         - mountPath: /root
           name: multichain-node-data
