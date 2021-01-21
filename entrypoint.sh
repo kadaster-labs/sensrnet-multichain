@@ -47,6 +47,13 @@ EOF
     -txindex \
     -shrinkdebugfilesize \
     -datadir=/data
+
+  echo "Wait 10 seconds to ensure we are initialised"
+  sleep 10
+
+  echo "Initializing the streams"
+  multichain-cli $CHAINNAME -datadir=/data create stream sensors true
+  multichain-cli $CHAINNAME -datadir=/data create stream organizations true
 else
   if [[ $MASTER_NODE_HOST =~ ^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$ ]];
   then
@@ -65,17 +72,17 @@ else
     -rpcallowip=$RPC_ALLOW_IP \
     -rpcport=$RPC_PORT \
     -datadir=/data
+
+  echo "Wait 10 seconds to ensure we are initialised"
+  sleep 10
+EOF
 fi
 
-echo "Wait 10 seconds to ensure we are initialised"
-sleep 10
-
-echo "Setup /data/$CHAINNAME/multichain.conf"
 cat << EOF > /data/$CHAINNAME/multichain.conf
-rpcuser=$RPC_USER
-rpcpassword=$RPC_PASSWORD
-rpcallowip=$RPC_ALLOW_IP
-rpcport=$RPC_PORT
+  rpcuser=$RPC_USER
+  rpcpassword=$RPC_PASSWORD
+  rpcallowip=$RPC_ALLOW_IP
+  rpcport=$RPC_PORT
 EOF
 
 echo "Setup /root/explorer.conf"
