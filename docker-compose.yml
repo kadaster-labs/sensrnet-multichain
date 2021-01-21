@@ -1,58 +1,65 @@
 version: '3.7'
 
 volumes:
-    # Needs to be explicitly removed when starting with a new chain: 'docker-compose down -v'.
-    multichain-node-data:
+    # Volumes need to be recreated when starting a new chain: 'docker-compose down -v'.
+    main-node-data:
+        driver: local
+
+    node-data:
         driver: local
 
 services:
 
-    masternode:
+    main-node:
         build:
-            context: master
+            context: .
             dockerfile: Dockerfile
         expose:
-            - 8571
+            - 2750
             - 8570
+            - 8571
         ports:
-            - 8571:8571
+            - 2750:2750
             - 8570:8570
+            - 8571:8571
+        volumes:
+            - main-node-data:/data
         environment:
-            CHAINNAME: MyChain
+            CHAINNAME: SensRNet
             NETWORK_PORT: 8571
             RPC_PORT: 8570
             RPC_USER: multichainrpc
             RPC_PASSWORD: password
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
+            DELAY_INIT: 0
             PARAM_TARGET_BLOCK_SIZE: target-block-time|30
             PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
             PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
 
-
-    multichain-node:
+    node:
         build:
-            context: multichain-node
+            context: .
             dockerfile: Dockerfile
         expose:
-            - 2750
-            - 8571
-            - 8570
+            - 2751
+            - 8572
+            - 8573
         ports:
-            - 2750:2750
-            - 8573:8571
+            - 2751:2750
             - 8572:8570
+            - 8573:8571
         volumes:
-            - multichain-node-data:/data
+            - node-data:/data
         environment:
-            CHAINNAME: MyChain
+            CHAINNAME: SensRNet
             NETWORK_PORT: 8571
             RPC_PORT: 8570
             RPC_USER: multichainrpc
             RPC_PASSWORD: password
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
-            MASTER_NODE_HOST: masternode
+            MAIN_NODE_HOST: main-node
             DELAY_INIT: 1
         links:
-            - masternode
+            - main-node
         depends_on:
-            - masternode
+            - main-node

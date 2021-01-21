@@ -28,13 +28,14 @@ RUN tar -xvzf explorer.tar.gz \
   && rm -Rf explorer.tar.gz
 
 WORKDIR /root/multichain-explorer-master
-COPY ./requirements.txt ./requirements.txt
+COPY requirements.txt ./requirements.txt
 RUN pip install -r requirements.txt \
   && python setup.py install --user
 
 # Configure container
 WORKDIR /root
-COPY ./entrypoint.sh ./entrypoint.sh
+COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 EXPOSE 8570
 EXPOSE 8571

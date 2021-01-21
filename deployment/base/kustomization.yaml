@@ -1,8 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: multichain-node
-
 commonLabels:
   app.kubernetes.io/name: sensrnet
   app.kubernetes.io/component: multichain-node
@@ -11,6 +9,5 @@ resources:
   - deployment.yaml
   - ingress-tcp.yaml
   - ingress.yaml
-  - namespace.yaml
   - pvc.yaml
   - service.yaml
