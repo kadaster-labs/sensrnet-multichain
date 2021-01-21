@@ -7,7 +7,16 @@ spec:
     spec:
       containers:
       - name: multichain-node
-        image: sensrnet-multichain_multichain-node:latest
+        image: sensrnet-multichain_node:latest
+        env:
+          - name: MAIN_NODE_HOST
+            $patch: delete
+          - name: PARAM_TARGET_BLOCK_SIZE
+            value: "target-block-time|30"
+          - name: PARAM_ANYONE_CAN_CONNECT
+            value: "anyone-can-connect|true"
+          - name: PARAM_ANYONE_CAN_MINE
+            value: "anyone-can-mine|true"
         imagePullPolicy: Never
         resources: {}
         volumeMounts:
