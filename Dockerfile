@@ -35,6 +35,7 @@ RUN pip install -r requirements.txt \
 # Configure container
 WORKDIR /root
 COPY entrypoint.sh ./entrypoint.sh
+RUN chmod +x entrypoint.sh
 
 EXPOSE 8570
 EXPOSE 8571
