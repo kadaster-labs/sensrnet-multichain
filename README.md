@@ -13,8 +13,8 @@ To configure your chain, we use environment variables.
 #### Required
 
 * CHAINNAME: DockerChain
-* NETWORK_PORT: 7447       # also expose this port!
-* RPC_PORT: 8000           # also expose this port!
+* NETWORK_PORT: 8571       # also expose this port!
+* RPC_PORT: 8570           # also expose this port!
 * RPC_USER: multichainrpc
 * RPC_PASSWORD: change-me
 * RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
@@ -91,8 +91,8 @@ To configure your chain, we use environment variables.
 #### Required
 
 * CHAINNAME: DockerChain
-* NETWORK_PORT: 7447       # also expose this port!
-* RPC_PORT: 8000           # also expose this port!
+* NETWORK_PORT: 8571       # also expose this port!
+* RPC_PORT: 8570           # also expose this port!
 * RPC_USER: multichainrpc
 * RPC_PASSWORD: 79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz
 * RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
