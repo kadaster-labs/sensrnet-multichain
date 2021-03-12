@@ -50,7 +50,7 @@ EOF
 
   wait 10
 
-  for stream in 'organizations' 'sensors' ;
+  for stream in 'legalentity' 'sensordevice' 'observationgoal' ;
   do
     echo "Creating stream: $stream"
     multichain-cli $CHAINNAME -datadir=/data create stream $stream true
