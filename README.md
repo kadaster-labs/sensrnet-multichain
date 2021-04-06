@@ -1,30 +1,35 @@
-## Persisting your chain
+# SensRNet Blockchain Application
 
-Add a volume
+This is the repo for the blockchain component of the SensrNet application. It features the blockchain component,
+which can be used to form a network of connected nodes which distribute and validate each others transactions (events).
 
-<somewhere>:/root/.multichain
+For more information see our [documentation](https://github.com/kadaster-labs/sensrnet-home/blob/main/docs/Architecture.md#component-sync) (and especially details about [MultiChain](https://github.com/kadaster-labs/sensrnet-home/blob/main/docs/SyncMultiChainEN.md)).
 
-## Configuration
+## Running a Node
 
-### Masternode
+Two node-variants can be created using the `Dockerfile` in this repository.
+Depending on the node variant, either a new chain is started, or an existing chain is joined.
+The node variant depends on the availability of the MAIN_NODE_HOST environment variable.
+The node configuration depends on environment variables.
 
-To configure your chain, we use environment variables.
+### Configuration
 
-#### Required
-
-* CHAINNAME: DockerChain
-* NETWORK_PORT: 8571       # also expose this port!
-* RPC_PORT: 8570           # also expose this port!
-* RPC_USER: multichainrpc
-* RPC_PASSWORD: change-me
-* RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
+* CHAINNAME: SensRNet (The blockchain name to join / create)
+* NETWORK_PORT: 8571 (The port to connect with the blockchain network)
+* RPC_PORT: 8570 (The port to connect using RPC)
+* RPC_USER: multichainrpc (The user to connect using RPC)
+* RPC_PASSWORD: change-me (The password to connect using RPC)
+* RPC_ALLOW_IP: 0.0.0.0/0.0.0.0 (IP range allowed to connect using RPC)
+* DELAY_INIT: 1 (Whether to wait during node initialization)
+* PARAM_TARGET_BLOCK_SIZE: target-block-time|30
+* PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
+* PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
 
 #### Optional
 
-* PARAM_<something descriptive>='<variable>|<value>' e.g: `PARAM_TARGET_BLOCK_SIZE='target-block-time|15'`
+These variables can be set as environment variables:
 
-These variables can be set:
-
+* MAIN_NODE_HOST: main-node (The IP-address / hostname of the blockchain node to connect to)
 ```
 # Basic chain parameters
 
@@ -84,29 +89,28 @@ max-std-op-drops-count = 5              # Maximum number of OP_DROPs per output 
 max-std-element-size = 600              # Maximum size of data elements in standard transactions, in bytes. (128 - 32768)
 ```
 
-### Node
+### Example Network
 
-To configure your chain, we use environment variables.
+An example network containing a main-node (which creates a chain), and another node (which connects to the main-node) 
+can be brought up using the following command:
 
-#### Required
+```bash
+$ docker-compose up --build
+```
 
-* CHAINNAME: DockerChain
-* NETWORK_PORT: 8571       # also expose this port!
-* RPC_PORT: 8570           # also expose this port!
-* RPC_USER: multichainrpc
-* RPC_PASSWORD: 79pgKQusiH3VDVpyzsM6e3kRz6gWNctAwgJvymG3iiuz
-* RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
-* MASTERNODE: masternode   # IP address of the master node, or a docker compose link. Don't forget the links section!
+And stopped:
+
+```bash
+$ docker-compose stop
+```
 
 ## Deployment
-The components can be deployed using one of the following commands, depending on the component you want to deploy:
+The components can be deployed using one of the overlays, depending on the component you want to deploy:
 ```
-kustomize build deployment/explorer | kubectl apply -f -
-kustomize build deployment/masternode | kubectl apply -f -
-kustomize build deployment/node | kubectl apply -f -
+kustomize build deployment/overlays/demo | kubectl apply -f -
 ```
 
-In our current setup, the explorer runs on the same cluster as the masternode. Regular multichain nodes run on different clusters and therefore require the public IP of the masternode.
+In our current setup, the explorer runs on the same cluster as the main-node. Regular multichain nodes run on different clusters and therefore require the public IP of an entry node.
 
 ## Find Us
 
