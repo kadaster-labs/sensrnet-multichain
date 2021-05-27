@@ -1,7 +1,7 @@
 const multichain = require('multinodejs');
 
 const connection = multichain({
-    port: 8572,
+    port: 8570,
     host: '127.0.0.1',
     user: 'multichainrpc',
     pass: 'password',
@@ -28,5 +28,5 @@ const sensor =  {
     "eventType":"SensorRegistered"
 }
 
-const publishPromise = connection.publish(['sensordevice', key, Buffer.from(JSON.stringify(sensor)).toString('hex')]);
+const publishPromise = connection.publish(['sensors', key, Buffer.from(JSON.stringify(sensor)).toString('hex')]);
 publishPromise.then((result) => console.log(result), (error) => console.error(error));
