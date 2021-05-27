@@ -24,6 +24,7 @@ The node configuration depends on environment variables.
 * PARAM_TARGET_BLOCK_SIZE: target-block-time|30
 * PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
 * PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
+* PRIVATE_KEY: The private key to initialize the node with. This will only work when the node has not yet been initialized.
 
 #### Optional
 

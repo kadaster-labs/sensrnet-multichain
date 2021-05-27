@@ -67,14 +67,15 @@ start_node () {
   echo "Start node with existing chain: $CHAINNAME from $IP:$NETWORK_PORT"
 
   multichaind $CHAINNAME@$IP:$NETWORK_PORT \
-    -daemon \
-    -txindex \
-    -shrinkdebugfilesize \
-    -rpcuser=$RPC_USER \
-    -rpcpassword=$RPC_PASSWORD \
-    -rpcallowip=$RPC_ALLOW_IP \
-    -rpcport=$RPC_PORT \
-    -datadir=/data
+      -daemon \
+      -txindex \
+      -shrinkdebugfilesize \
+      -rpcuser=$RPC_USER \
+      -rpcpassword=$RPC_PASSWORD \
+      -rpcallowip=$RPC_ALLOW_IP \
+      -rpcport=$RPC_PORT \
+      -datadir=/data \
+      -initprivkey=$PRIVATE_KEY
 
   wait 10
 }
