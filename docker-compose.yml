@@ -35,9 +35,9 @@ services:
             PARAM_TARGET_BLOCK_SIZE: target-block-time|30
             PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
             PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
-            PARAM_PRIVATE_KEY_VERSION: private-key-version|809748bc
-            PARAM_ADDRESS_CHECKSUM_VALUE: address-checksum-value|26ccd85d
-            PARAM_ADDRESS_PUBKEYHASH_VERSION: address-pubkeyhash-version|00bb4a06
+            PARAM_PRIVATE_KEY_VERSION: private-key-version|80ea7b28
+            PARAM_ADDRESS_CHECKSUM_VALUE: address-checksum-value|344cbb15
+            PARAM_ADDRESS_PUBKEYHASH_VERSION: address-pubkeyhash-version|00f7391c
 
     node:
         build:
@@ -62,6 +62,7 @@ services:
             RPC_ALLOW_IP: 0.0.0.0/0.0.0.0
             MAIN_NODE_HOST: main-node
             DELAY_INIT: 1
+            PRIVATE_KEY: VDFLMeU5BA8S8iRssuMvhUXh1WoTC7YcLGh4knCdP4oWVNw4RY8sQowG
         links:
             - main-node
         depends_on:

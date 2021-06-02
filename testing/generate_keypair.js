@@ -2,15 +2,15 @@ let bs58 = require('bs58');
 let crypto = require('crypto');
 let elliptic = require('elliptic');
 
-const PUBLIC_KEY_HASH = '00bb4a06';
-const publicKeyHashVersionBytes = hexToBytes(PUBLIC_KEY_HASH);
-console.log(`PUBLIC_KEY_HASH: ${PUBLIC_KEY_HASH}`);
+const ADDRESS_PUBLIC_KEY_HASH_VERSION = '00f7391c';
+const publicKeyHashVersionBytes = hexToBytes(ADDRESS_PUBLIC_KEY_HASH_VERSION);
+console.log(`ADDRESS_PUBLIC_KEY_HASH_VERSION: ${ADDRESS_PUBLIC_KEY_HASH_VERSION}`);
 
-const PRIVATE_KEY_VERSION = '809748bc';
+const PRIVATE_KEY_VERSION = '80ea7b28';
 let privateKeyVersionBytes = hexToBytes(PRIVATE_KEY_VERSION);
 console.log(`PRIVATE_KEY_VERSION: ${PRIVATE_KEY_VERSION}`);
 
-const ADDRESS_CHECKSUM_VALUE = '26ccd85d';
+const ADDRESS_CHECKSUM_VALUE = '344cbb15';
 const addressChecksumBytes = hexToBytes(ADDRESS_CHECKSUM_VALUE);
 console.log(`ADDRESS_CHECKSUM_VALUE: ${ADDRESS_CHECKSUM_VALUE}`);
 
