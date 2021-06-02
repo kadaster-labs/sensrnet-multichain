@@ -104,14 +104,6 @@ And stopped:
 $ docker-compose stop
 ```
 
-## Deployment
-The components can be deployed using one of the overlays, depending on the component you want to deploy:
-```
-kustomize build deployment/overlays/demo | kubectl apply -f -
-```
-
-In our current setup, the explorer runs on the same cluster as the main-node. Regular multichain nodes run on different clusters and therefore require the public IP of an entry node.
-
 ## Find Us
 
 * [GitHub](https://github.com/kadaster-labs/sensrnet-home)
