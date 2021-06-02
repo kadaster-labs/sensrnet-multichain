@@ -2,17 +2,6 @@ let bs58 = require('bs58');
 let crypto = require('crypto');
 let elliptic = require('elliptic');
 
-const ADDRESS_PUBLIC_KEY_HASH_VERSION = '00f7391c';
-const publicKeyHashVersionBytes = hexToBytes(ADDRESS_PUBLIC_KEY_HASH_VERSION);
-console.log(`ADDRESS_PUBLIC_KEY_HASH_VERSION: ${ADDRESS_PUBLIC_KEY_HASH_VERSION}`);
-
-const PRIVATE_KEY_VERSION = '80ea7b28';
-let privateKeyVersionBytes = hexToBytes(PRIVATE_KEY_VERSION);
-console.log(`PRIVATE_KEY_VERSION: ${PRIVATE_KEY_VERSION}`);
-
-const ADDRESS_CHECKSUM_VALUE = '344cbb15';
-const addressChecksumBytes = hexToBytes(ADDRESS_CHECKSUM_VALUE);
-console.log(`ADDRESS_CHECKSUM_VALUE: ${ADDRESS_CHECKSUM_VALUE}`);
 
 function hexToBytes(hex) {
     const bytes = [];
@@ -34,6 +23,18 @@ function addHash(origin, hash, step) {
 
     return origin
 }
+
+const ADDRESS_PUBLIC_KEY_HASH_VERSION = '00f7391c';
+const publicKeyHashVersionBytes = hexToBytes(ADDRESS_PUBLIC_KEY_HASH_VERSION);
+console.log(`ADDRESS_PUBLIC_KEY_HASH_VERSION: ${ADDRESS_PUBLIC_KEY_HASH_VERSION}`);
+
+const PRIVATE_KEY_VERSION = '80ea7b28';
+let privateKeyVersionBytes = hexToBytes(PRIVATE_KEY_VERSION);
+console.log(`PRIVATE_KEY_VERSION: ${PRIVATE_KEY_VERSION}`);
+
+const ADDRESS_CHECKSUM_VALUE = '344cbb15';
+const addressChecksumBytes = hexToBytes(ADDRESS_CHECKSUM_VALUE);
+console.log(`ADDRESS_CHECKSUM_VALUE: ${ADDRESS_CHECKSUM_VALUE}`);
 
 const keyPair = new elliptic.ec('secp256k1').genKeyPair();
 
