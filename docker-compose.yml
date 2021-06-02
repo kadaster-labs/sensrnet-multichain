@@ -35,6 +35,9 @@ services:
             PARAM_TARGET_BLOCK_SIZE: target-block-time|30
             PARAM_ANYONE_CAN_CONNECT: anyone-can-connect|true
             PARAM_ANYONE_CAN_MINE: anyone-can-mine|true
+            PARAM_PRIVATE_KEY_VERSION: private-key-version|809748bc
+            PARAM_ADDRESS_CHECKSUM_VALUE: address-checksum-value|26ccd85d
+            PARAM_ADDRESS_PUBKEYHASH_VERSION: address-pubkeyhash-version|00bb4a06
 
     node:
         build:

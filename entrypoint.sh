@@ -46,7 +46,8 @@ EOF
     -daemon \
     -txindex \
     -shrinkdebugfilesize \
-    -datadir=/data
+    -datadir=/data \
+    -initprivkey=$PRIVATE_KEY
 
   wait 10
 
