@@ -8,6 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "bs58": "^4.0.1",
+    "crypto": "^1.0.1",
+    "elliptic": "^6.5.4",
     "multinodejs": "^2.0.0",
     "patch-package": "^6.2.2",
     "uuid": "^8.2.0"
