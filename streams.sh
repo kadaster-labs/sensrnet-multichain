@@ -15,6 +15,6 @@ create_streams () {
   done
 }
 
-echo "go"
+
 wait 10
 create_streams
