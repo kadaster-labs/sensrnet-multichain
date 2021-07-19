@@ -15,6 +15,9 @@ create_streams () {
   done
 }
 
-
+# Wait a bit as the Multichain daemon is started in background. This prevents
+# racing conditions where multichain-cli tries to create streams while the chain
+# isn't created yet
 wait 10
+
 create_streams
