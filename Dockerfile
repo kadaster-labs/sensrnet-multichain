@@ -1,18 +1,23 @@
-FROM ubuntu:20.04
+FROM alpine:3.14
 
-RUN apt-get update && apt-get install -y \
-  curl \
-  wget \
-  dnsutils \
-  && apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN     apk update \
+        && apk upgrade \
+        && apk add bash \
+        && apk add bind-tools \
+        && apk add busybox \
+        && apk add ca-certificates \
+        && apk add tar \
+        && apk add wget \
+        && rm -rf /var/cache/apk/*
 
 # Multichain
 WORKDIR /tmp
-RUN     wget https://www.multichain.com/download/multichain-2.1.1.tar.gz \
-        && tar -xvzf multichain-2.1.1.tar.gz \
-        && cd multichain-2.1.1 \
-        && mv multichaind multichain-cli multichain-util /usr/local/bin \
-        && cd /tmp \
+RUN     MULTICHAIN_VERSION=2.1.2 \
+        && wget https://www.multichain.com/download/multichain-$MULTICHAIN_VERSION.tar.gz \
+        && tar -xvzf multichain-$MULTICHAIN_VERSION.tar.gz \
+        && cd multichain-$MULTICHAIN_VERSION \
+        && mv multichaind multichain-cli multichain-util /usr/bin/ \
+        && cd ../ \
         && rm -Rf multichain*
 
 # Configure container
