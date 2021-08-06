@@ -20,6 +20,22 @@ init_chain() {
       IFS='|' read -ra KV <<< "${!KV[0]}"
       sed -i "s/^${KV[0]}.*/${KV[0]} = ${KV[1]}/" /data/$CHAINNAME/params.dat
   done
+
+  cat /data/$CHAINNAME/params.dat
+}
+
+create_multichain_conf() {
+  echo "create multichain conf"
+
+  cat << EOF > /data/$CHAINNAME/multichain.conf
+  rpcuser=$RPC_USER
+  rpcpassword=$RPC_PASSWORD
+  rpcallowip=$RPC_ALLOW_IP
+  rpcport=$RPC_PORT
+EOF
+
+  cp /data/$CHAINNAME/multichain.conf /data/multichain.conf
+  cat /data/$CHAINNAME/multichain.conf
 }
 
 start_main_node () {
@@ -29,15 +45,9 @@ start_main_node () {
     init_chain
   fi
 
-  cat /data/$CHAINNAME/params.dat
+  create_multichain_conf
 
-  cat << EOF > /data/$CHAINNAME/multichain.conf
-  rpcuser=$RPC_USER
-  rpcpassword=$RPC_PASSWORD
-  rpcallowip=$RPC_ALLOW_IP
-  rpcport=$RPC_PORT
-EOF
-  cp /data/$CHAINNAME/multichain.conf /data/multichain.conf
+  echo "Conf created"
 
   exec multichaind $CHAINNAME \
     -txindex \
@@ -54,6 +64,9 @@ start_node () {
   fi
 
   echo "Start node with existing chain: $CHAINNAME from $IP:$NETWORK_PORT"
+
+  mkdir -p /data/$CHAINNAME
+  create_multichain_conf
 
   exec multichaind $CHAINNAME@$IP:$NETWORK_PORT \
       -txindex \
