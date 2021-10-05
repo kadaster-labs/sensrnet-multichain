@@ -1,2 +1,0 @@
-py-ubjson==0.16.1
-pycrypto==2.6.1
