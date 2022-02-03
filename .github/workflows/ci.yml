@@ -5,6 +5,10 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  DOCKERHUB_NAMESPACE: sensrnetnl
+  REPOSITORY: multichain-node
+
 jobs:
   build:
     name: Build
